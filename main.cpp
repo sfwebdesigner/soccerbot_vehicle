@@ -1,11 +1,7 @@
 //===============================================================
 //
-//  vehicle with teensy processor
+//  soccer bot vehicle using teensy 4.0
 //
-//  1.04 add nrf test
-//  1.03 ---
-//  1.02 added motor test
-//  1.01 initial version provided to Hunter
 
 
 //===============================================================
@@ -20,15 +16,6 @@ const int MIN_LEFT_JOYSTICK = 10;       // minimum joystick value for left joyst
 const int SCALE_MOTOR_SPEED = 33;       // scale motor speed by this percentage to match KV spec of specific motor
 const double SCRAFING_CORRECTION = 1.1; // helps to perfect strafing motion
 
-// configure gimbal stuff
-const int GIMBAL_SLOW_SLEW_START = 10;  // joystick value that starts slow slew rate
-const int GIMBAL_FAST_SLEW_START = 70;  // joystick value that starts fast slew rate
-const int GIMBAL_SLOW_SLEW_STEP = 1;    // slow slew rate  (1 is the slowest value)
-const int GIMBAL_FAST_SLEW_STEP = 4;    // fast slew rate  (4 is 4 times faster than 1)
-
-const int GIMBAL_ROLL_0 = 250;          // offset to level roll  (range 0 to 500)
-const int GIMBAL_PITCH_0 = 0;           // offset to level pitch (range 0 to 500)
-const int GIMBAL_PITCH_MAX = 450;       // max pitch value; pitch range is -max to max
 
 //===============================================================
 
@@ -36,11 +23,6 @@ const int GIMBAL_PITCH_MAX = 450;       // max pitch value; pitch range is -max 
 using namespace TeensyTimerTool;
 
 #include "RingBuf.h"
-#include "msecTimer.h"
-#include "msgPacket.h"
-#include "laserBit.h"
-#include "laserXmit.h"
-#include "laserRcvr.h"
 #include "nrfVehicle.h"
 #include "nrfPacket.h"
 #include "mecanumWheels_AdafruitMS.h"
